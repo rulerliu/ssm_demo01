@@ -44,7 +44,7 @@
         <property name="configLocation" value="classpath:spring/mybatis-config.xml"></property>
     </bean>
 
-    <!-- 配置扫描Dao接口包，动态实现Dao接口，注入到spring容器中 -->
+    <!-- 配置扫描Dao接口包，动态实现Mapper接口，注入到spring容器中 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- 注入sqlSessionFactory -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
