@@ -5,7 +5,7 @@ import lombok.ToString;
 
 @Data
 @ToString
-public class User {
+public class User extends PageBO {
     private Integer id;
 
     private String name;

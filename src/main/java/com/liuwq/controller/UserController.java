@@ -38,6 +38,7 @@ public class UserController {
     @ApiImplicitParam(name = "id", value = "主键id", required = true, dataType = "Integer", paramType = "query")
     @ResponseBody
     public User selectUserById(@RequestParam Integer id) {
+        log.info(">>>UserController...selectUserByid()...");
         User user = userService.selectUser(id);
         return user;
     }

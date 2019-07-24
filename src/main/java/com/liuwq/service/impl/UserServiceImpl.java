@@ -1,11 +1,16 @@
 package com.liuwq.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.liuwq.dao.UserMapper;
+import com.liuwq.po.PaginationData;
 import com.liuwq.po.RspInfoBO;
 import com.liuwq.po.User;
 import com.liuwq.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @description:
@@ -21,7 +26,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public RspInfoBO queryListByCondition(User bo) {
-        return new RspInfoBO(userMapper.queryUserPage(bo));
+        // 分页条件查询
+        Page<Object> objects = PageHelper.startPage(bo.getPage(), bo.getRows());
+        List<User> users = userMapper.queryUserPage(bo);
+        PaginationData paginationData = new PaginationData(users, objects.getTotal());
+        return new RspInfoBO(paginationData);
     }
 
     @Override

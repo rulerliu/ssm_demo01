@@ -21,6 +21,9 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
         <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.RequestMapping"/>
     </context:component-scan>
+    <context:component-scan base-package="com.liuwq.config" />
+    <context:component-scan base-package="com.liuwq.utils" />
+    <context:component-scan base-package="com.liuwq.job" />
 
     <!-- 开启SpringMVC注解模式 扩充了注解驱动，可以将请求参数绑定到控制器参数 -->
     <mvc:annotation-driven>
@@ -43,7 +46,7 @@
     <mvc:resources location="classpath:/META-INF/resources/" mapping="swagger-ui.html"/>
     <mvc:resources location="classpath:/META-INF/resources/webjars/" mapping="/webjars/**"/>
     <!--&lt;!&ndash; 添加扫描配置类 &ndash;&gt;-->
-    <bean class="com.liuwq.config.SwaggerConfig" />
+    <!--<bean class="com.liuwq.config.SwaggerConfig" />-->
 
     <!-- 对静态资源文件的访问， 将无法mapping到Controller的path交给default servlet handler处理  -->
     <mvc:default-servlet-handler/>
